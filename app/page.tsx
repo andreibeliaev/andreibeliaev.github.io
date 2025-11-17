@@ -1,15 +1,19 @@
-import Hero from "@/components/Hero";
+import Header from "@/components/Header";
 import About from "@/components/About";
+import News from "@/components/News";
 import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
+    <>
+    <Header />
+    <main className="bg-white">
       <About />
+      <News />
       <Projects />
-      <Contact />
     </main>
+    <Footer />
+    </>
   );
 }

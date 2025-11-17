@@ -1,0 +1,50 @@
+export default function News() {
+  const updates = [
+    {
+      date: "October 8, 2025",
+      title: (
+        <>
+          Kicked off a new Computer Vision project for histopathology at <strong>Epivara</strong>.
+        </>
+      )
+    },
+    {
+      date: "May 19, 2025",
+      title: (
+        <>
+          I started my <strong>AI/ML SWE Internship</strong> at <strong>Epivara</strong> in the Research Park!
+        </>
+      )
+    }
+  ];
+
+  return (
+    <section id="news" className="pt-8">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+          Updates
+        </h2>
+
+        <div className="space-y-4">
+          {updates.map((item, index) => (
+            <div key={index} className="group">
+              <div className="flex gap-8 items-center">
+                <time className="text-base w-32 flex-shrink-0">
+                  {item.date}
+                </time>
+                <div className="flex-1">
+                  <h3 className="text-base text-black">
+                    {item.title}
+                  </h3>
+                  {/* <p className="text-sm text-gray-500">
+                    {item.description}
+                  </p> */}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

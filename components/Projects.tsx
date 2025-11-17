@@ -1,69 +1,82 @@
 export default function Projects() {
-  // You'll add your real projects here later
   const projects = [
     {
-      title: "Project One",
-      description: "A cool project that solves X problem using Y technology.",
-      tech: ["React", "Node.js", "PostgreSQL"],
+      title: "Full-stack AI platform for Data Analysis and Data Ingestion",
+      description: "The agentic platform I developed enables researchers to retrieve insights, generate reports, insert data, and run statistical analysis using natural language",
       link: "#"
     },
     {
-      title: "Project Two",
-      description: "Another awesome project showcasing your skills.",
-      tech: ["Next.js", "TypeScript", "Tailwind"],
+      title: "Entropy-aware sampling in vLLM",
+      description: "Built a non-trivial method to control generation diversity",
+      link: "https://github.com/siiyayu/vllm-entropy"
+    },
+    {
+      title: "Energy-Based Transformers",
+      description: "Performed ablation study of MCMC sampling strategies to improve performance and scaling",
+      link: "https://alexiglad.github.io/blog/2025/ebt/"
+    },
+    {
+      title: "Real-Time Trade Mirroring System",
+      description: "A real-time futures trade mirroring service using WebSockets and async Python, achieved 56 ms latency",
       link: "#"
     },
     {
-      title: "Project Three",
-      description: "Something interesting you built that you're proud of.",
-      tech: ["Python", "Flask", "MongoDB"],
-      link: "#"
-    }
+      title: "Image Immunization",
+      description: "Implemented semantic attack to make images resistant to generative AI editing",
+      link: "https://github.com/siiyayu/SemanticAttack"
+    },
   ];
 
+  const isExternalLink = (url: string) => {
+    return url.startsWith('http://') || url.startsWith('https://');
+  };
+
+  const isValidLink = (url: string) => {
+    return url && url !== "#";
+  };
+
   return (
-    <section id="projects" className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-8">
-        {/* Section Title */}
-        <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-          Featured Projects
+    <section id="projects" className="pt-8">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+          Projects
         </h2>
+        <div className="space-y-4">
+          {projects.map((project, index) => {
+            const isExternal = isExternalLink(project.link);
+            const hasLink = isValidLink(project.link);
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="text-2xl font-semibold text-gray-800 mb-3">
-                {project.title}
-              </h3>
-              <p className="text-gray-600 mb-4">
-                {project.description}
-              </p>
-
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded text-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Link */}
-              <a
-                href={project.link}
-                className="text-blue-600 hover:text-blue-700 font-medium"
-              >
-                View Project →
-              </a>
-            </div>
-          ))}
+            if (hasLink) {
+              return (
+                <a
+                  key={index}
+                  href={project.link}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  className="block group"
+                >
+                  <h3 className="text-base text-black mb-1 group-hover:text-gray-600 transition-colors">
+                    {project.title}
+                    {isExternal && " ↗"}
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {project.description}
+                  </p>
+                </a>
+              );
+            } else {
+              return (
+                <div key={index} className="block">
+                  <h3 className="text-base text-black mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {project.description}
+                  </p>
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     </section>
