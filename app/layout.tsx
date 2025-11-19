@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const robotoSans = Roboto({
@@ -15,7 +16,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name | Personal Website",
+  title: "Andrei Beliaev",
   description: "Portfolio and personal website showcasing my projects and experience",
 };
 
@@ -27,9 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${robotoSans.variable} ${robotoMono.variable} antialiased`}
+        className={`${robotoSans.variable} ${robotoMono.variable} antialiased bg-white dark:bg-zinc-900`}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

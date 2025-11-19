@@ -21,7 +21,7 @@ export default function News() {
   return (
     <section id="news" className="pt-8">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-sm uppercase tracking-wider text-gray-400 mb-4">
+        <h2 className="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4">
           Updates
         </h2>
 
@@ -29,11 +29,11 @@ export default function News() {
           {updates.map((item, index) => (
             <div key={index} className="group">
               <div className="flex gap-8 items-center">
-                <time className="text-base w-32 flex-shrink-0">
+                <time className="text-base text-black dark:text-white w-32 flex-shrink-0">
                   {item.date}
                 </time>
                 <div className="flex-1">
-                  <h3 className="text-base text-black">
+                  <h3 className="text-base text-black dark:text-white">
                     {item.title}
                   </h3>
                   {/* <p className="text-sm text-gray-500">
