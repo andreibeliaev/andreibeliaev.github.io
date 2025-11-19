@@ -51,7 +51,7 @@ export default function Header() {
             >
             <FaGithub />
           </a>
-          <a href="/Andrei%20Beliaev%20resume.pdf"
+          <a href="/andrei-beliaev-resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
