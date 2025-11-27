@@ -102,7 +102,7 @@ export default function GenerativeArt() {
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
     // Animation state
-    const startTimes = [50, 81, 70.5, 104.4];
+    const startTimes = [50, 81, 104.4];
     let time = startTimes[Math.floor(Math.random() * startTimes.length)]; // Pick random start phase
     let frameCount = 0;
     let isRunning = true;
@@ -167,6 +167,7 @@ export default function GenerativeArt() {
           width={800}
           height={600}
           className="w-full h-auto bg-white dark:bg-zinc-900"
+          title="Pieter de Jong Attractor"
         />
         {/* <div>
             t = {displayTime}
