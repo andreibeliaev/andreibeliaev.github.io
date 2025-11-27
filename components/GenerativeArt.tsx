@@ -102,7 +102,7 @@ export default function GenerativeArt() {
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
     // Animation state
-    const startTimes = [50, 81, 70.5];
+    const startTimes = [50, 81, 70.5, 104.4];
     let time = startTimes[Math.floor(Math.random() * startTimes.length)]; // Pick random start phase
     let frameCount = 0;
     let isRunning = true;
@@ -131,7 +131,7 @@ export default function GenerativeArt() {
 
       // Increment time for next frame (very slow morphing)
       time += 0.00005;
-    //   time += 0.001;
+    //   time += 0.005
     //   frameCount += 1;
 
     //   if (frameCount % 20 === 0) {
