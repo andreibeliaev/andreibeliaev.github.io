@@ -1,23 +1,23 @@
 'use client';
 import { FaLinkedin, FaInstagram, FaXTwitter, FaGithub, FaEnvelope } from "react-icons/fa6";
 import { HiMoon, HiSun } from "react-icons/hi2";
+import { TbFileCv } from "react-icons/tb";
 import { useTheme } from '@/components/ThemeProvider';
-import { Switch } from '@/components/ui/switch';
 
 export default function Header() {
 
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="pt-8 px-8 bg-white dark:bg-zinc-900">
-      <div className="max-w-3xl mx-auto flex justify-between items-center">
+    <header className="pt-6 sm:pt-8 px-4 bg-white dark:bg-zinc-900">
+      <div className="max-w-3xl mx-auto flex flex-col sm:flex-row sm:justify-between items-center gap-4 sm:gap-0">
         <div>
-          <h1 className="text-3xl font-light text-black dark:text-gray-100">
+          <h1 className="text-2xl sm:text-3xl font-light text-black dark:text-gray-100">
             Andrei Beliaev
           </h1>
         </div>
 
-        <nav className="flex gap-6 items-center">
+        <nav className="flex gap-3 sm:gap-6 items-center flex-wrap">
           <a href="https://www.linkedin.com/in/andreibeliaev"
             target="_blank"
             rel="noopener noreferrer"
@@ -56,20 +56,19 @@ export default function Header() {
             rel="noopener noreferrer"
             className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
             >
-            cv
+            <TbFileCv />
           </a>
-          <div className="flex items-center gap-2">
-            <Switch
-              checked={theme === 'dark'}
-              onCheckedChange={toggleTheme}
-              aria-label="Toggle theme"
-            />
+          <button
+            onClick={toggleTheme}
+            className="hover:scale-110 transition-transform inline-flex items-center"
+            aria-label="Toggle theme"
+          >
             {theme === 'dark' ? (
               <HiMoon className="h-4 w-4 text-gray-300" />
             ) : (
               <HiSun className="h-4 w-4 text-amber-500" />
             )}
-          </div>
+          </button>
         </nav>
       </div>
     </header>

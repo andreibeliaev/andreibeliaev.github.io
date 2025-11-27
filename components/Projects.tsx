@@ -1,9 +1,9 @@
 export default function Projects() {
   const projects = [
     {
-      title: "Full-stack AI platform for Data Analysis and Ingestion",
+      title: "Full-stack AI platform for Data Analysis and Insertion",
       description: "The agentic platform I developed enables researchers to retrieve insights, generate reports, insert data, and run statistical analysis using natural language",
-      link: "#"
+      link: "https://drive.google.com/file/d/1BDSyRKwTDX9cB4eC3iwxG2A1zhi6azbf/view?usp=sharing"
     },
     {
       title: "Entropy-aware sampling in vLLM",
@@ -36,7 +36,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="pt-8">
+    <section id="projects" className="pt-8 px-4">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4">
           Projects
