@@ -64,7 +64,7 @@ export default function Header() {
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
-              <HiMoon className="h-4 w-4 text-gray-300" />
+              <HiMoon className="h-4 w-4" />
             ) : (
               <HiSun className="h-4 w-4 text-amber-500" />
             )}
