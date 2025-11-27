@@ -1,5 +1,8 @@
 // GPU shader programs for De Jong Attractor visualization
 // The vertex shader transforms each point, the fragment shader colors it
+// https://paulbourke.net/fractals/peterdejong/
+// https://github.com/QC20/DeJong-Attractor/tree/main
+// https://www.reddit.com/r/math/comments/gppz4q/animated_pieter_de_jong_attractor/
 
 export const vertexShader = `
   // Inputs: starting position and animation time
