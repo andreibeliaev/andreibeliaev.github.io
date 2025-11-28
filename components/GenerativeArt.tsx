@@ -120,7 +120,7 @@ export default function GenerativeArt() {
       // Get current theme colors
       const isDark = themeRef.current === 'dark';
       const pointColor = isDark ? [1.0, 1.0, 1.0] : [0.0, 0.0, 0.0];
-      const pointAlpha = isDark ? 0.1 : 0.7; // Higher opacity for light mode
+      const pointAlpha = isDark ? 0.1 : 0.9; // Higher opacity for light mode
 
       // Clear canvas with transparent background (CSS handles the actual background)
       gl.clearColor(0, 0, 0, 0);
