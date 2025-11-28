@@ -20,7 +20,7 @@ export default function News() {
 
   return (
     <section id="news" className="pt-8 px-4">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <h2 className="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4">
           Updates
         </h2>
