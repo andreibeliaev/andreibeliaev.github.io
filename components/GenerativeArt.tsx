@@ -162,17 +162,20 @@ export default function GenerativeArt() {
     <section id="art" className="pt-8 px-4">
       <div className="max-w-3xl mx-auto">
 
-        <canvas
-          ref={canvasRef}
-          width={800}
-          height={600}
-          className="w-full h-auto bg-white dark:bg-zinc-900"
-          title="Pieter de Jong Attractor"
-        />
-        {/* <div>
-            t = {displayTime}
-        </div> */}
-
+        <a
+          href="https://paulbourke.net/fractals/peterdejong/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block cursor-pointer"
+        >
+          <canvas
+            ref={canvasRef}
+            width={800}
+            height={600}
+            className="w-full h-auto bg-white dark:bg-zinc-900"
+            title="Pieter de Jong Attractor"
+          />
+        </a>
       </div>
     </section>
   );

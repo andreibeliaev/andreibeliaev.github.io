@@ -25,24 +25,17 @@ export default function Header() {
             >
             <FaLinkedin />
           </a>
-          <a href="https://www.instagram.com/_siyayu/"
+          {/* <a href="https://www.instagram.com/_siyayu/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
             >
             <FaInstagram />
-          </a>
+          </a> */}
           <a href="mailto:andrewbelyaev2164@gmail.com"
             className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
             >
             <FaEnvelope />
-          </a>
-          <a href="https://x.com/anbeli"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
-            >
-            <FaXTwitter />
           </a>
           <a href="https://github.com/andreibeliaev"
             target="_blank"
@@ -50,6 +43,13 @@ export default function Header() {
             className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
             >
             <FaGithub />
+          </a>
+          <a href="https://x.com/anbeli"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
+            >
+            <FaXTwitter />
           </a>
           <a href="/Andrei%20Beliaev%20resume.pdf"
             target="_blank"
