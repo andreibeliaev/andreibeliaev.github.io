@@ -1,12 +1,26 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { FaLinkedin, FaInstagram, FaXTwitter, FaGithub, FaEnvelope } from "react-icons/fa6";
 import { HiMoon, HiSun } from "react-icons/hi2";
 import { TbFileCv } from "react-icons/tb";
-import { useTheme } from '@/components/ThemeProvider';
+import { SunMoon } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 export default function Header() {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  const { theme, toggleTheme } = useTheme();
+  // Only render theme icon after mount to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Toggle cycle: system → light → dark → system
+  const toggleTheme = () => {
+    if (theme === 'system') setTheme('light');
+    else if (theme === 'light') setTheme('dark');
+    else setTheme('system');
+  };
 
   return (
     <header className="pt-6 sm:pt-8 px-4 bg-white dark:bg-zinc-900">
@@ -21,52 +35,55 @@ export default function Header() {
           <a href="https://www.linkedin.com/in/andreibeliaev"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-lg hover:scale-130 transition-transform inline-flex items-center"
             >
             <FaLinkedin />
           </a>
           {/* <a href="https://www.instagram.com/_siyayu/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-lg hover:scale-130 transition-transform inline-flex items-center"
             >
             <FaInstagram />
           </a> */}
           <a href="mailto:andrewbelyaev2164@gmail.com"
-            className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-lg hover:scale-130 transition-transform inline-flex items-center"
             >
             <FaEnvelope />
           </a>
           <a href="https://github.com/andreibeliaev"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-lg hover:scale-130 transition-transform inline-flex items-center"
             >
             <FaGithub />
           </a>
           <a href="https://x.com/anbeli"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-lg hover:scale-130 transition-transform inline-flex items-center"
             >
             <FaXTwitter />
           </a>
           <a href="/Andrei%20Beliaev%20resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-lg hover:scale-110 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-lg hover:scale-130 transition-transform inline-flex items-center"
             >
             <TbFileCv />
           </a>
           <button
             onClick={toggleTheme}
-            className="hover:scale-110 transition-transform inline-flex items-center"
+            className={`ml-2 hover:scale-130 transition-all duration-500 inline-flex items-center h-4 w-4 ${
+              mounted ? 'opacity-100' : 'opacity-0'
+            }`}
             aria-label="Toggle theme"
+            title={theme === 'light' ? 'Light' : theme === 'dark' ? 'Dark' : 'System'}
           >
-            {theme === 'dark' ? (
-              <HiMoon className="h-4 w-4" />
-            ) : (
-              <HiSun className="h-4 w-4 text-amber-500" />
+            {mounted && (
+              theme === 'light' ? <HiSun className="h-4 w-4 text-amber-500" /> :
+              theme === 'dark' ? <HiMoon className="h-4 w-4 text-white" /> :
+              <SunMoon className="h-4 w-4 text-black dark:text-white" />
             )}
           </button>
         </nav>

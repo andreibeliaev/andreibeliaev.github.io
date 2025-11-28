@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 const robotoSans = Roboto({
@@ -27,24 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const theme = localStorage.getItem('theme') || 'dark';
-                if (theme === 'dark') {
-                  document.documentElement.classList.add('dark');
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
       <body
         className={`${robotoSans.variable} ${robotoMono.variable} antialiased bg-white dark:bg-zinc-900`}
       >
-        <ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>

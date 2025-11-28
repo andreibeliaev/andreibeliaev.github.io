@@ -1,18 +1,18 @@
 'use client';
-import { useEffect, useRef , useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { vertexShader, fragmentShader } from '@/lib/shaders';
-import { useTheme } from '@/components/ThemeProvider';
+import { useThemeImmediate } from '@/hooks/useThemeImmediate';
 
 export default function GenerativeArt() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameRef = useRef<number | undefined>(undefined);
-  const { theme } = useTheme();
-  const themeRef = useRef(theme);
+  const { resolvedTheme } = useThemeImmediate();
+  const themeRef = useRef(resolvedTheme);
 
-  // Update theme ref when theme changes
+  // Update theme ref when resolved theme changes
   useEffect(() => {
-    themeRef.current = theme;
-  }, [theme]);
+    themeRef.current = resolvedTheme;
+  }, [resolvedTheme]);
 
   const [displayTime, setDisplayTime] = useState<number>(72.0);
 
@@ -119,8 +119,11 @@ export default function GenerativeArt() {
 
       // Get current theme colors
       const isDark = themeRef.current === 'dark';
-      const pointColor = isDark ? [1.0, 1.0, 1.0] : [0.0, 0.0, 0.0];
-      const pointAlpha = isDark ? 0.1 : 0.9; // Higher opacity for light mode
+      const pointColor = isDark ? [1.0, 1.0, 1.0] : [0.15, 0.1, 0.3]; // White for dark, dark purple for light
+      const pointAlpha = isDark ? 0.1 : 0.5; // Slightly higher for visibility, low for smooth gradients
+
+    //   const pointColor = isDark ? [1.0, 1.0, 1.0] : [0.1, 0.0, 0.3]; // White for dark, deep purple for light
+    //   const pointAlpha = isDark ? 0.1 : 0.4; // Slightly higher for visibility, low for smooth gradients
 
       // Clear canvas with transparent background (CSS handles the actual background)
       gl.clearColor(0, 0, 0, 0);
