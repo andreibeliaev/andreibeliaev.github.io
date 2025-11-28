@@ -119,12 +119,11 @@ export default function GenerativeArt() {
 
       // Get current theme colors
       const isDark = themeRef.current === 'dark';
-      const bgColor = isDark ? [24/255, 24/255, 27/255] : [1.0, 1.0, 1.0];
       const pointColor = isDark ? [1.0, 1.0, 1.0] : [0.0, 0.0, 0.0];
       const pointAlpha = isDark ? 0.1 : 0.7; // Higher opacity for light mode
 
-      // Clear canvas with theme background
-      gl.clearColor(bgColor[0], bgColor[1], bgColor[2], 1.0);
+      // Clear canvas with transparent background (CSS handles the actual background)
+      gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       // Update uniforms
@@ -173,7 +172,7 @@ export default function GenerativeArt() {
           href="https://paulbourke.net/fractals/peterdejong/"
           target="_blank"
           rel="noopener noreferrer"
-          className="block cursor-pointer"
+          className="block cursor-pointer bg-white dark:bg-zinc-900"
         >
           <canvas
             ref={canvasRef}
