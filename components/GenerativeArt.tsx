@@ -106,10 +106,16 @@ export default function GenerativeArt() {
     let time = startTimes[Math.floor(Math.random() * startTimes.length)]; // Pick random start phase
     let frameCount = 0;
     let isRunning = true;
+    let lastTime = performance.now();
 
     // Animation loop
     function render() {
       if (!isRunning || !gl) return;
+
+      // Calculate delta time for frame-independent animation
+      const now = performance.now();
+      const deltaTime = (now - lastTime) / 1000; // Convert to seconds
+      lastTime = now;
 
       // Get current theme colors
       const isDark = themeRef.current === 'dark';
@@ -129,8 +135,9 @@ export default function GenerativeArt() {
       // Draw all points
       gl.drawArrays(gl.POINTS, 0, numPoints);
 
-      // Increment time for next frame (very slow morphing)
-      time += 0.00005;
+      // Increment time based on elapsed time (frame-independent)
+      time += 0.003 * deltaTime;
+    //   time += 0.00005;
     //   time += 0.005
     //   frameCount += 1;
 
