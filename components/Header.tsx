@@ -35,46 +35,46 @@ export default function Header() {
           <a href="https://www.linkedin.com/in/andreibeliaev"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-xl hover:scale-130 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <FaLinkedin />
           </a>
           {/* <a href="https://www.instagram.com/_siyayu/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-xl hover:scale-130 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <FaInstagram />
           </a> */}
           <a href="mailto:andrewbelyaev2164@gmail.com"
-            className="text-black dark:text-white text-xl hover:scale-130 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <FaEnvelope />
           </a>
           <a href="https://github.com/andreibeliaev"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-xl hover:scale-130 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <FaGithub />
           </a>
           <a href="https://x.com/anbeli"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-xl hover:scale-130 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <FaXTwitter />
           </a>
           <a href="/Andrei%20Beliaev%20resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black dark:text-white text-xl hover:scale-130 transition-transform inline-flex items-center"
+            className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <TbFileCv />
           </a>
           <button
             onClick={toggleTheme}
-            className={`ml-2 hover:scale-130 transition-all duration-500 inline-flex items-center h-5 w-5 ${
+            className={`ml-2 hover:scale-120 transition-all duration-500 inline-flex items-center h-5 w-5 ${
               mounted ? 'opacity-100' : 'opacity-0'
             }`}
             aria-label="Toggle theme"

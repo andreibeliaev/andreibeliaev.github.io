@@ -8,7 +8,7 @@ export default function About() {
         <div className="space-y-4">
           <p className="text-base leading-relaxed text-black dark:text-white">
             Hey! It's Andrei. I started in control theory, worked on quality and fraud as an analyst in <a href="https://tinkoff-group.com/" target="_blank" rel="noopener noreferrer" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400">FinTech ↗</a>,
-            and eventually shifted into AI and shipping systems from whitebord design to live production. I'm passionate about applying research, bringing ideas to life, and creating things.
+            and eventually shifted into AI and shipping systems from whiteboard design to live production. I'm passionate about applying research, bringing ideas to life, and creating things.
             Outside of work I'm into swimming, something I've done my whole life. I also enjoy hiking and recently picked up running.
           </p>
           <p className="text-base eading-relaxed text-black dark:text-white">
