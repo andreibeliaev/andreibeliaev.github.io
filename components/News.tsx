@@ -1,10 +1,20 @@
 export default function News() {
   const updates = [
     {
+      date: "December 6, 2025",
+      title: (
+        <>
+          I will start a <strong>Graduate Research Assistantship</strong> in the Department
+           of <strong>Comparative Biosciences at UIUC</strong> in January 2026, focusing on 
+           computer vision for reproductive biology.
+        </>
+      )
+    },
+    {
       date: "October 8, 2025",
       title: (
         <>
-          Kicked off a new Computer Vision project for histopathology at <strong>Epivara</strong>.
+          Began work on a new computer vision project for histopathology at <strong>Epivara</strong>.
         </>
       )
     },
@@ -25,7 +35,7 @@ export default function News() {
           Updates
         </h2>
 
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-32 overflow-y-auto">
           {updates.map((item, index) => (
             <div key={index} className="group">
               <div className="flex gap-8 items-center">
