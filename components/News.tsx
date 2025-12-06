@@ -4,8 +4,8 @@ export default function News() {
       date: "December 6, 2025",
       title: (
         <>
-          I will start a <strong>Graduate Research Assistantship</strong> in the Department
-           of <strong>Comparative Biosciences at UIUC</strong> in January 2026, focusing on 
+          I will start a <strong>Graduate Research Assistantship</strong> in the <strong>Department
+           of Comparative Biosciences</strong> at <strong>UIUC</strong> in January 2026, focusing on 
            computer vision for reproductive biology.
         </>
       )
