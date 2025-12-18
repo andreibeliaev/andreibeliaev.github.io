@@ -138,7 +138,7 @@ export default function GenerativeArt() {
       gl.drawArrays(gl.POINTS, 0, numPoints);
 
       // Increment time based on elapsed time (frame-independent)
-      time += 0.003 * deltaTime;
+      time += 0.001 * deltaTime;
     //   time += 0.00005;
     //   time += 0.005
     //   frameCount += 1;
