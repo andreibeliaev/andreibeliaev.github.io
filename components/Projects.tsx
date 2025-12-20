@@ -1,13 +1,13 @@
 export default function Projects() {
   const projects = [
     {
-      title: "Full-stack AI platform for Data Analysis and Insertion",
-      description: "The agentic platform I developed enables researchers to retrieve insights, generate reports, insert data, and run statistical analysis using natural language",
+      title: "Full-stack conversational AI for Data Analysis and Entry",
+      description: "An analytics platform that lets researchers query databases and generate statistical analyses, charts, and reports in natural language, replacing hours of manual SQL and R/Python scripting",
       link: "https://drive.google.com/file/d/1BDSyRKwTDX9cB4eC3iwxG2A1zhi6azbf/view?usp=sharing"
     },
     {
       title: "Entropy-aware sampling in vLLM",
-      description: "Built a non-trivial method to control generation diversity",
+      description: "Implemented entropy-aware token sampling in vLLM with GPU-batched lookahead to control diversity by penalizing entropy-reducing tokens in speculative decoding",
       link: "https://github.com/siiyayu/vllm-entropy"
     },
     {
