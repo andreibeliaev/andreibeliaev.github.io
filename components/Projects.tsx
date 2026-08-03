@@ -47,7 +47,7 @@ const projects: Project[] = [
   {
     title: "ARM: Multi-Camera Pose and Behavior Tracking (in progress)",
     description:
-      "Multi-view 3D pose tracking on a calibrated camera rig with temporal event modeling, automating behavior measurement under heavy occlusion",
+      "Multi-view 3D pose tracking on a calibrated camera rig with temporal event modeling, automating rodent behavior measurement under heavy occlusion",
     media: [
       {
         type: "video",
