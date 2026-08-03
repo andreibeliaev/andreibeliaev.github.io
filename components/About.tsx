@@ -11,8 +11,8 @@ export default function About() {
             and eventually shifted into AI and shipping systems from whiteboard design to live production. I'm passionate about applying research, bringing ideas to life, and creating things.
             Outside of work I'm into swimming, something I've done my whole life. I also enjoy hiking and recently picked up running.
           </p>
-          <p className="text-base eading-relaxed text-black dark:text-white">
-            Feel free to reach out at andrewbelyaev2164 [at] gmail [dot] com.
+          <p className="text-base leading-relaxed text-black dark:text-white">
+            Feel free to reach out at <a href="mailto:andrewbelyaev2164@gmail.com" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400">andrewbelyaev2164@gmail.com</a>.
           </p>
         </div>
       </div>
