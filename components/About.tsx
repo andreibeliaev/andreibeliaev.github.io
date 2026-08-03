@@ -14,9 +14,6 @@ export default function About() {
           <p className="text-base eading-relaxed text-black dark:text-white">
             Feel free to reach out at andrewbelyaev2164 [at] gmail [dot] com.
           </p>
-          <p className="text-base leading-relaxed text-red-600 dark:text-red-400 italic">
-            I'm wrapping up my Master's in CS at UIUC and looking for roles starting in late May/June 2026.
-          </p>
         </div>
       </div>
     </section>
