@@ -18,7 +18,8 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: "Andrei Beliaev",
-  description: "Portfolio and personal website showcasing my projects and experience",
+  description:
+    "AI/ML engineer working across foundation models, computer vision, agentic data systems, and production software.",
 };
 
 export default function RootLayout({

@@ -1,19 +1,18 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { FaLinkedin, FaInstagram, FaXTwitter, FaGithub, FaEnvelope } from "react-icons/fa6";
+import { useSyncExternalStore } from 'react';
+import { FaLinkedin, FaXTwitter, FaGithub, FaEnvelope } from "react-icons/fa6";
 import { HiMoon, HiSun } from "react-icons/hi2";
 import { TbFileCv } from "react-icons/tb";
 import { SunMoon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 export default function Header() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false
+  );
   const { theme, setTheme } = useTheme();
-
-  // Only render theme icon after mount to avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Toggle cycle: system → light → dark → system
   const toggleTheme = () => {
@@ -35,18 +34,15 @@ export default function Header() {
           <a href="https://www.linkedin.com/in/andreibeliaev"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
             className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <FaLinkedin />
           </a>
-          {/* <a href="https://www.instagram.com/_siyayu/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
-            >
-            <FaInstagram />
-          </a> */}
           <a href="mailto:andrewbelyaev2164@gmail.com"
+            aria-label="Email"
+            title="Email"
             className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <FaEnvelope />
@@ -54,6 +50,8 @@ export default function Header() {
           <a href="https://github.com/andreibeliaev"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
             className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <FaGithub />
@@ -61,6 +59,8 @@ export default function Header() {
           <a href="https://x.com/anbeli"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="X"
+            title="X"
             className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <FaXTwitter />
@@ -68,6 +68,8 @@ export default function Header() {
           <a href="/Andrei%20Beliaev%20resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Resume"
+            title="Resume"
             className="text-black dark:text-white text-xl hover:scale-120 transition-transform inline-flex items-center"
             >
             <TbFileCv />

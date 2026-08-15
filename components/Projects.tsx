@@ -32,7 +32,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Epibot: Conversational AI for Data Analysis and Entry",
+    title: "EpiBot: Conversational AI for Data Analysis and Entry",
     description:
       "An analytics platform that lets researchers query databases and generate statistical analyses, charts, and reports in natural language, replacing hours of manual SQL and R/Python scripting",
     media: [
@@ -93,9 +93,11 @@ const ROTATE_MS = 6000;
 function ProjectCard({
   project,
   onExpand,
+  wide = false,
 }: {
   project: Project;
-  onExpand: (index: number) => void;
+  onExpand?: (index: number) => void;
+  wide?: boolean;
 }) {
   const media = project.media;
   const [active, setActive] = useState(0);
@@ -112,94 +114,104 @@ function ProjectCard({
   }, [media, paused]);
 
   return (
-    <div>
+    <article
+      className={
+        wide
+          ? "sm:grid sm:grid-cols-[1.2fr_0.8fr] sm:items-center sm:gap-6"
+          : undefined
+      }
+    >
       {media && (
-        <button
-          type="button"
-          onClick={() => onExpand(active)}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          aria-label={`Expand media for ${project.title}`}
-          className="group relative block w-full aspect-video mb-3 rounded-lg overflow-hidden border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 cursor-zoom-in"
-        >
-          {media.map((item, i) => (
-            <span
-              key={item.src}
-              className={`absolute inset-0 transition-opacity duration-500 ${
-                i === active ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              {item.type === "video" && item.autoplay ? (
-                <video
-                  src={item.src}
-                  poster={item.poster}
-                  aria-label={item.alt}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full object-contain block pointer-events-none transition-transform duration-300 group-hover:scale-[1.03]"
-                />
-              ) : (
-                <img
-                  src={item.type === "video" ? item.poster : item.src}
-                  alt={item.alt}
-                  loading="lazy"
-                  className="w-full h-full object-contain block transition-transform duration-300 group-hover:scale-[1.03]"
-                />
-              )}
-              {item.type === "video" && !item.autoplay && (
-                <span className="absolute inset-0 flex items-center justify-center">
-                  <span className="w-11 h-11 rounded-full bg-black/55 backdrop-blur-sm flex items-center justify-center">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-4 h-4 translate-x-[1px] fill-white"
-                      aria-hidden="true"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+        <div>
+          <button
+            type="button"
+            onClick={() => onExpand?.(active)}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            aria-label={`Expand media for ${project.title}`}
+            className="group relative block w-full aspect-video mb-3 rounded-lg overflow-hidden border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 cursor-zoom-in"
+          >
+            {media.map((item, i) => (
+              <span
+                key={item.src}
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  i === active ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {item.type === "video" && item.autoplay ? (
+                  <video
+                    src={item.src}
+                    poster={item.poster}
+                    aria-label={item.alt}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    className="w-full h-full object-contain block pointer-events-none transition-transform duration-300 group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <img
+                    src={item.type === "video" ? item.poster : item.src}
+                    alt={item.alt}
+                    loading="lazy"
+                    className="w-full h-full object-contain block transition-transform duration-300 group-hover:scale-[1.03]"
+                  />
+                )}
+                {item.type === "video" && !item.autoplay && (
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="w-11 h-11 rounded-full bg-black/55 backdrop-blur-sm flex items-center justify-center">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="w-4 h-4 translate-x-[1px] fill-white"
+                        aria-hidden="true"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </span>
                   </span>
-                </span>
-              )}
-            </span>
-          ))}
+                )}
+              </span>
+            ))}
 
-          {media.length > 1 && (
-            <span className="absolute bottom-2 right-2 flex gap-1.5">
-              {media.map((item, i) => (
-                <span
-                  key={item.src}
-                  className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                    i === active ? "bg-white" : "bg-white/40"
-                  }`}
-                />
-              ))}
-            </span>
-          )}
-        </button>
+            {media.length > 1 && (
+              <span className="absolute bottom-2 right-2 flex gap-1.5">
+                {media.map((item, i) => (
+                  <span
+                    key={item.src}
+                    className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                      i === active ? "bg-white" : "bg-white/40"
+                    }`}
+                  />
+                ))}
+              </span>
+            )}
+          </button>
+        </div>
       )}
 
-      {project.link ? (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block"
-        >
-          <h3 className="text-base text-black dark:text-white mb-1 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors">
-            {project.title} ↗
+      <div>
+        {project.link ? (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block"
+          >
+            <h3 className="text-base text-black dark:text-white mb-1 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors">
+              {project.title} ↗
+            </h3>
+          </a>
+        ) : (
+          <h3 className="mb-1 text-base text-black dark:text-white">
+            {project.title}
           </h3>
-        </a>
-      ) : (
-        <h3 className="text-base text-black dark:text-white mb-1">
-          {project.title}
-        </h3>
-      )}
-      <p className="text-sm text-gray-500 dark:text-gray-400">
-        {project.description}
-      </p>
-    </div>
+        )}
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          {project.description}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -236,23 +248,39 @@ export default function Projects() {
   }, [lightbox, close, step]);
 
   const current = lightbox ? lightbox.items[lightbox.index] : null;
+  const featuredProjects = projects.filter((project) => project.media);
+  const otherProjects = projects.filter((project) => !project.media);
 
   return (
     <section id="projects" className="pt-8 px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4">
-          Projects
+          Selected work
         </h2>
 
         <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2">
-          {projects.map((project) => (
-            <ProjectCard
+          {featuredProjects.map((project, projectIndex) => (
+            <div
               key={project.title}
-              project={project}
-              onExpand={(index) =>
-                setLightbox({ items: project.media!, index })
-              }
-            />
+              className={projectIndex === 0 ? "sm:col-span-2" : undefined}
+            >
+              <ProjectCard
+                project={project}
+                wide={projectIndex === 0}
+                onExpand={(index) =>
+                  setLightbox({ items: project.media!, index })
+                }
+              />
+            </div>
+          ))}
+        </div>
+
+        <h3 className="mb-5 mt-12 text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500">
+          Other work
+        </h3>
+        <div className="grid gap-x-6 gap-y-8 border-t border-gray-200 pt-6 dark:border-zinc-700 sm:grid-cols-2">
+          {otherProjects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
       </div>

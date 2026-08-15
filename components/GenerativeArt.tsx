@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { vertexShader, fragmentShader } from '@/lib/shaders';
 import { useThemeImmediate } from '@/hooks/useThemeImmediate';
 
@@ -14,8 +14,6 @@ export default function GenerativeArt() {
     themeRef.current = resolvedTheme;
   }, [resolvedTheme]);
 
-  const [displayTime, setDisplayTime] = useState<number>(72.0);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -24,7 +22,6 @@ export default function GenerativeArt() {
     const gl = canvas.getContext('webgl', {
       alpha: true,
       premultipliedAlpha: true,
-      // @ts-ignore - colorSpace is newer but supported
       colorSpace: 'display-p3'
     }) as WebGLRenderingContext | null;
 
@@ -104,7 +101,6 @@ export default function GenerativeArt() {
     // Animation state
     const startTimes = [50, 81, 104.4];
     let time = startTimes[Math.floor(Math.random() * startTimes.length)]; // Pick random start phase
-    let frameCount = 0;
     let isRunning = true;
     let lastTime = performance.now();
 
@@ -168,24 +164,20 @@ export default function GenerativeArt() {
   }, []);
 
   return (
-    <section id="art" className="pt-8 px-4">
-      <div className="max-w-3xl mx-auto">
-
-        <a
-          href="https://paulbourke.net/fractals/peterdejong/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block cursor-pointer bg-white dark:bg-zinc-900"
-        >
-          <canvas
-            ref={canvasRef}
-            width={800}
-            height={600}
-            className="w-full h-auto bg-white dark:bg-zinc-900"
-            title="Pieter de Jong Attractor"
-          />
-        </a>
-      </div>
-    </section>
+    <a
+      href="https://paulbourke.net/fractals/peterdejong/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Learn about the Pieter de Jong attractor"
+      className="mx-auto block w-full max-w-72 cursor-pointer bg-white opacity-85 transition-opacity hover:opacity-100 dark:bg-zinc-900 sm:max-w-sm md:max-w-none"
+    >
+      <canvas
+        ref={canvasRef}
+        width={800}
+        height={600}
+        className="h-auto w-full bg-white dark:bg-zinc-900"
+        title="Pieter de Jong Attractor"
+      />
+    </a>
   );
 }
