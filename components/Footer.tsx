@@ -1,20 +1,8 @@
 export default function Footer() {
-  const lastUpdated = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-
   return (
-    <footer className="pt-8 pb-6 px-4 bg-white dark:bg-zinc-900">
-      <div className="max-w-4xl mx-auto text-center">
-        <p className="text-xs text-gray-400 dark:text-gray-500">
-          Made with <span className="text-red-600 dark:text-red-500" style={{ fontFamily: 'Inter, sans-serif' }}>♥</span>
-        </p>
-        <p className="text-xs text-gray-400 dark:text-gray-500">
-          Last updated {lastUpdated}
-        </p>
-      </div>
+    <footer className="site-width pb-10 pt-12 text-center text-base sm:pb-14">
+      <p>Last updated September 2026</p>
+      <a className="text-link mt-2 inline-block" href="/attractor/">Attractor</a>
     </footer>
   );
 }

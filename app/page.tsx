@@ -6,8 +6,9 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
+      <a href="#main" className="skip-link">Skip to content</a>
       <Header />
-      <main className="bg-white dark:bg-zinc-900">
+      <main id="main">
         <Hero />
         <Projects />
       </main>

@@ -1,25 +1,15 @@
 import type { Metadata } from "next";
-import { Roboto, Roboto_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
+import { Lora } from "next/font/google";
 import "./globals.css";
 
-const robotoSans = Roboto({
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-roboto-sans",
-  subsets: ["latin"],
-});
-
-const robotoMono = Roboto_Mono({
-  weight: ["300", "400"],
-  variable: "--font-roboto-mono",
-  subsets: ["latin"],
-});
+const lora = Lora({ subsets: ["latin"], display: "swap", variable: "--font-lora" });
 
 export const metadata: Metadata = {
   title: "Andrei Beliaev",
   description:
-    "AI/ML engineer working across foundation models, computer vision, agentic data systems, and production software.",
+    "Andrei Beliaev. Machine learning at Epivara, HistoForge, and research interests in vision, energy-based models, and video.",
 };
 
 export default function RootLayout({
@@ -43,9 +33,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body
-        className={`${robotoSans.variable} ${robotoMono.variable} antialiased bg-white dark:bg-zinc-900`}
-      >
+      <body className={`${lora.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
