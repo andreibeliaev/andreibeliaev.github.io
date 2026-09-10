@@ -29,7 +29,6 @@ export default function Hero() {
             <a className="text-link" href="mailto:andrewbelyaev2164@gmail.com">reach out</a>.
           </p>
           <p className="about-invitation mt-4">
-            If you&apos;re working on related problems or have similar interests,
             I&apos;d be happy to{" "}
             <a className="text-link" href="mailto:andrewbelyaev2164@gmail.com">connect</a>{" "}
             and explore ways to collaborate.
