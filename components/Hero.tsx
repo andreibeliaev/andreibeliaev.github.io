@@ -29,9 +29,8 @@ export default function Hero() {
             <a className="text-link" href="mailto:andrewbelyaev2164@gmail.com">reach out</a>.
           </p>
           <p className="about-invitation mt-4">
-            I&apos;d be happy to{" "}
-            <a className="text-link" href="mailto:andrewbelyaev2164@gmail.com">connect</a>{" "}
-            and explore ways to collaborate.
+            I&apos;d be happy to connect for collaboration. Feel free to{" "}
+            <a className="text-link" href="mailto:andrewbelyaev2164@gmail.com">email me</a>.
           </p>
         </div>
         <div className="w-full max-w-[15rem] justify-self-center">
