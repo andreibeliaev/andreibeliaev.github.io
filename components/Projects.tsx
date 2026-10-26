@@ -14,6 +14,7 @@ type ProjectMedia = {
 
 type Project = {
   title: string;
+  href?: string;
   description: string;
   details?: string[];
   media: ProjectMedia[];
@@ -22,10 +23,11 @@ type Project = {
 const projects: Project[] = [
   {
     title: "HistoForge",
+    href: "https://histoforge.github.io/",
     description:
-      "I'm building an open-source platform that lets researchers train, run, and share pathology models directly from QuPath.",
+      "I built and released an open-source platform that lets researchers train, run, and share pathology models directly from QuPath.",
     details: [
-      "It will include a DINOv3 + CNN-adapter model, which captures tissue-scale context while preserving cell-level detail. It processes 16× more tissue per pass, trains 3.7× faster, and halves inference cost compared with a state-of-the-art baseline. It improves segmentation and classification and is applicable to roughly 3/4 of surveyed tissue types.",
+      "A DINOv3 + CNN-adapter model captures tissue-scale context while preserving cell-level detail. It processes 16× more tissue per pass, trains 3.7× faster, and halves inference cost compared with a state-of-the-art baseline. It improves segmentation and classification and is applicable to roughly 3/4 of surveyed tissue types.",
       "Longer term, I'd like to build on this work toward a general-purpose, promptable model for segmenting tissue regions and individual structures, so researchers can quantify their number, morphology, and spatial relationships.",
     ],
     media: [
@@ -154,7 +156,13 @@ export default function Projects() {
                 />
               </button>
               <div className="min-w-0">
-                <h3 className="font-semibold">{project.title}</h3>
+                <h3 className="font-semibold">
+                  {project.href ? (
+                    <a className="text-link" href={project.href} target="_blank" rel="noopener noreferrer">
+                      {project.title}
+                    </a>
+                  ) : project.title}
+                </h3>
                 <p className="mt-1">{project.description}</p>
                 {project.details && (
                   <details className="group mt-2">
@@ -168,6 +176,11 @@ export default function Projects() {
                   </details>
                 )}
                 <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-base">
+                  {project.href && (
+                    <a className="text-link" href={project.href} target="_blank" rel="noopener noreferrer">
+                      Website<span className="sr-only">: {project.title}</span>
+                    </a>
+                  )}
                   {project.media.map((item, index) => (
                     <button key={item.src} type="button" className="text-link cursor-pointer" onClick={() => expand(index)}>
                       {item.label}
