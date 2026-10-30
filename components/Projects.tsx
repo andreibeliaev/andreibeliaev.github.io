@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
 
 type ProjectMedia = {
+  id: string;
   type: "image" | "video";
   src: string;
   poster?: string;
@@ -32,6 +33,7 @@ const projects: Project[] = [
     ],
     media: [
       {
+        id: "histoforge-screenshot",
         type: "image",
         src: "/media/histoforge-qupath.jpg",
         alt: "HistoForge in QuPath, showing Leydig-cell and tubule segmentation with per-module measurements.",
@@ -45,6 +47,7 @@ const projects: Project[] = [
       "Developing detection, re-identification, and multi-camera 3D pose tracking for animal behavior measurement, with a focus on maintaining identity through occlusion and re-entry. Work in progress.",
     media: [
       {
+        id: "arm-demo",
         type: "video",
         src: "/media/arm-demo.mp4",
         poster: "/media/arm-poster.jpg",
@@ -52,6 +55,7 @@ const projects: Project[] = [
         label: "Calibration prototype",
       },
       {
+        id: "arm-rig",
         type: "image",
         src: "/media/arm-rig.jpg",
         alt: "Synchronized machine-vision cameras mounted around the recording enclosure.",
@@ -65,6 +69,7 @@ const projects: Project[] = [
       "Built a conversational analytics platform that queries research databases, runs statistical analyses, and generates charts and reports. A human-in-the-loop ingestion agent turns experimental data into structured records.",
     media: [
       {
+        id: "epibot-demo",
         type: "video",
         src: "/media/epibot-demo.mp4",
         poster: "/media/epibot-poster.jpg",
@@ -105,18 +110,47 @@ type Lightbox = {
   index: number;
 };
 
+function subscribeToHashChanges(onChange: () => void) {
+  window.addEventListener("hashchange", onChange);
+  return () => window.removeEventListener("hashchange", onChange);
+}
+
+function getMediaHash() {
+  return window.location.hash;
+}
+
+function getServerMediaHash() {
+  return "";
+}
+
+function findLightbox(hash: string): Lightbox | null {
+  for (const project of projects) {
+    const index = project.media.findIndex((item) => `#${item.id}` === hash);
+    if (index !== -1) return { title: project.title, items: project.media, index };
+  }
+  return null;
+}
+
+function replaceMediaHash(mediaId: string) {
+  const url = new URL(window.location.href);
+  url.hash = mediaId;
+  window.history.replaceState(window.history.state, "", url);
+  // Replacing history preserves scroll but does not emit hashchange itself.
+  window.dispatchEvent(new Event("hashchange"));
+}
+
 export default function Projects() {
-  const [lightbox, setLightbox] = useState<Lightbox | null>(null);
+  const hash = useSyncExternalStore(subscribeToHashChanges, getMediaHash, getServerMediaHash);
+  const lightbox = findLightbox(hash);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const isOpen = lightbox !== null;
 
-  const close = useCallback(() => setLightbox(null), []);
-  const step = useCallback((delta: number) => {
-    setLightbox((current) => current ? {
-      ...current,
-      index: (current.index + delta + current.items.length) % current.items.length,
-    } : null);
-  }, []);
+  const close = useCallback(() => replaceMediaHash(""), []);
+  const step = (delta: number) => {
+    if (!lightbox) return;
+    const index = (lightbox.index + delta + lightbox.items.length) % lightbox.items.length;
+    replaceMediaHash(lightbox.items[index].id);
+  };
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -138,13 +172,11 @@ export default function Projects() {
       <div className="space-y-9">
         {projects.map((project) => {
           const first = project.media[0];
-          const expand = (index: number) => setLightbox({ title: project.title, items: project.media, index });
           return (
             <article key={project.title} className="project-row">
-              <button
-                type="button"
+              <a
+                href={`#${first.id}`}
                 className="project-thumbnail relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden"
-                onClick={() => expand(0)}
                 aria-label={"Open " + project.title + ": " + first.label.toLowerCase()}
               >
                 <Image
@@ -154,7 +186,7 @@ export default function Projects() {
                   sizes="(min-width: 640px) 220px, (max-width: 368px) 180px, 130px"
                   className="object-contain object-top"
                 />
-              </button>
+              </a>
               <div className="min-w-0">
                 <h3 className="font-semibold">
                   {project.href ? (
@@ -181,10 +213,10 @@ export default function Projects() {
                       Website<span className="sr-only">: {project.title}</span>
                     </a>
                   )}
-                  {project.media.map((item, index) => (
-                    <button key={item.src} type="button" className="text-link cursor-pointer" onClick={() => expand(index)}>
-                      {item.label}
-                    </button>
+                  {project.media.map((item) => (
+                    <a key={item.id} className="text-link" href={`#${item.id}`}>
+                      {item.label}<span className="sr-only">: {project.title}</span>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -224,7 +256,12 @@ export default function Projects() {
           <>
             <div className="mb-3 flex items-start justify-between gap-5 text-base">
               <p id="media-title" className="py-2">{lightbox.title}: {current.label}</p>
-              <button type="button" autoFocus className="min-h-11 cursor-pointer px-2 underline underline-offset-4" onClick={close}>Close</button>
+              <div className="flex items-center gap-4">
+                <a className="inline-flex min-h-11 items-center underline underline-offset-4" href={`#${current.id}`}>
+                  Permalink
+                </a>
+                <button type="button" autoFocus className="min-h-11 cursor-pointer px-2 underline underline-offset-4" onClick={close}>Close</button>
+              </div>
             </div>
             {current.type === "image" ? (
               <Image
