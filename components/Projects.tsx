@@ -18,6 +18,7 @@ type Project = {
   title: string;
   href?: string;
   description: string;
+  thumbnail?: { src: string; alt: string };
   details?: string[];
   media: ProjectMedia[];
 };
@@ -26,6 +27,7 @@ const projects: Project[] = [
   {
     title: "HistoForge",
     href: "https://histoforge.github.io/",
+    thumbnail: { src: "/media/histoforge-logo.png", alt: "HistoForge logo" },
     description:
       "I built and released an open-source platform that lets researchers train, run, and share pathology models directly from QuPath.",
     details: [
@@ -177,8 +179,8 @@ export default function Projects() {
                 aria-label={"Open " + project.title + ": " + first.label.toLowerCase()}
               >
                 <Image
-                  src={first.poster ?? first.src}
-                  alt={first.alt}
+                  src={project.thumbnail?.src ?? first.poster ?? first.src}
+                  alt={project.thumbnail?.alt ?? first.alt}
                   fill
                   sizes="(min-width: 640px) 220px, (max-width: 368px) 180px, 130px"
                   className="object-contain object-top"
