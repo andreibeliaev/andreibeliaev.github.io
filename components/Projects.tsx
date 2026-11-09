@@ -11,6 +11,7 @@ type ProjectMedia = {
   poster?: string;
   alt: string;
   label: string;
+  credit?: { label: string; href: string };
 };
 
 type Project = {
@@ -35,9 +36,13 @@ const projects: Project[] = [
       {
         id: "histoforge-screenshot",
         type: "image",
-        src: "/media/histoforge-qupath.jpg",
-        alt: "HistoForge in QuPath, showing Leydig-cell and tubule segmentation with per-module measurements.",
+        src: "/media/histoforge-lizard-nuclei.png",
+        alt: "Colon tissue from the Lizard dataset, cropped and overlaid in QuPath with HistoForge's predicted nucleus outlines and class colours.",
         label: "Screenshot",
+        credit: {
+          label: "Lizard: Graham et al. · CC BY-NC-SA 4.0 · Image credit and prediction context",
+          href: "https://histoforge.github.io/docs/reference/image-credits.html#lizard-cells",
+        },
       },
     ],
   },
@@ -278,7 +283,16 @@ export default function Projects() {
               />
             )}
             <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-base">
-              <p>{current.alt}</p>
+              <div>
+                <p>{current.alt}</p>
+                {current.credit && (
+                  <p className="mt-1">
+                    <a className="underline underline-offset-4" href={current.credit.href} target="_blank" rel="noopener noreferrer">
+                      {current.credit.label}
+                    </a>
+                  </p>
+                )}
+              </div>
               {lightbox.items.length > 1 && (
                 <div className="flex gap-5">
                   <button type="button" className="min-h-11 cursor-pointer underline underline-offset-4" onClick={() => step(-1)}>Previous</button>
