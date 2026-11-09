@@ -47,6 +47,13 @@ const projects: Project[] = [
       "Developing detection, re-identification, and multi-camera 3D pose tracking for animal behavior measurement, with a focus on maintaining identity through occlusion and re-entry. Work in progress.",
     media: [
       {
+        id: "arm-pose-comparison",
+        type: "image",
+        src: "/media/animal-pose-comparison.gif",
+        alt: "Skeleton-only 3D pose comparison of my pipeline, s-DANNCE, and LP3D, using matched frames, viewpoints, and scale. No animal footage.",
+        label: "Pose comparison",
+      },
+      {
         id: "arm-demo",
         type: "video",
         src: "/media/arm-demo.mp4",
