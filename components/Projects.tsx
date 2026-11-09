@@ -53,21 +53,6 @@ const projects: Project[] = [
         alt: "Skeleton-only 3D pose comparison of my pipeline, s-DANNCE, and LP3D, using matched frames, viewpoints, and scale. No animal footage.",
         label: "Pose comparison",
       },
-      {
-        id: "arm-demo",
-        type: "video",
-        src: "/media/arm-demo.mp4",
-        poster: "/media/arm-poster.jpg",
-        alt: "Camera-calibration prototype: a 3D hand pose reprojected onto three synchronized camera views.",
-        label: "Calibration prototype",
-      },
-      {
-        id: "arm-rig",
-        type: "image",
-        src: "/media/arm-rig.jpg",
-        alt: "Synchronized machine-vision cameras mounted around the recording enclosure.",
-        label: "Camera rig",
-      },
     ],
   },
   {
