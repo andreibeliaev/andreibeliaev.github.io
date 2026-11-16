@@ -70,7 +70,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Verify exported routes
-        run: test -s out/index.html && test -s out/attractor/index.html
+        run: node scripts/verify-search-metadata.mjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

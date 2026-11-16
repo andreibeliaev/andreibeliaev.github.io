@@ -7,6 +7,7 @@ import "./globals.css";
 const lora = Lora({ subsets: ["latin"], display: "swap", variable: "--font-lora" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://andreibeliaev.github.io/"),
   title: "Andrei Beliaev",
   description:
     "Andrei Beliaev. Machine learning at Epivara, HistoForge, and research interests in vision, energy-based models, and video.",
