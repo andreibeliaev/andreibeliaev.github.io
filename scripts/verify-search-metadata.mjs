@@ -33,6 +33,10 @@ for (const [file, canonical, title] of routes) {
     `${file}: missing sharing card`,
   );
   assert.ok(
+    /<meta name="google-site-verification" content="[^"]+"/.test(head),
+    `${file}: preserve Google Search Console ownership verification`,
+  );
+  assert.ok(
     !/<meta\b[^>]*\bcontent="[^"]*noindex/i.test(head),
     `${file}: page must not block indexing`,
   );

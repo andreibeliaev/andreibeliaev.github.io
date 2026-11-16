@@ -16,6 +16,8 @@ General guidelines for Claude to follow:
 - `out/` is untracked build output — never edit it.
 - Push over HTTPS (`gh` credential helper, account `andreibeliaev`). The SSH keys on this machine are not registered with GitHub.
 - After pushing, verify the deploy with `gh run watch`; the workflow takes about a minute.
+- Keep the Google Search Console verification tag in `app/layout.tsx`. Google
+  periodically checks it; removing it can revoke verified ownership of the site.
 
 ## Code style
 
