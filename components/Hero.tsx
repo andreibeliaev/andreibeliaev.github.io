@@ -20,17 +20,17 @@ export default function Hero() {
           <p className="mt-4">
             My interests in machine learning include representation learning and
             continual learning, particularly how models adapt to new tasks and
-            environments, as well as energy-based models,
-            iterative inference, and ML for scientific discovery.
+            environments, as well as energy-based models, agentic AI, and AI for
+            science and scientific discovery.
           </p>
           <p className="about-invitation mt-4">
             I&apos;m currently looking for machine learning, research engineering,
             and software engineering roles. Feel free to{" "}
-            <a className="text-link" href="mailto:andrewbelyaev2164@gmail.com">reach out</a>.
+            <a className="text-link" href="mailto:andrei.y.belyaev@gmail.com">reach out</a>.
           </p>
           <p className="about-invitation mt-4">
             I&apos;d be happy to connect for collaboration. Feel free to{" "}
-            <a className="text-link" href="mailto:andrewbelyaev2164@gmail.com">email me</a>.
+            <a className="text-link" href="mailto:andrei.y.belyaev@gmail.com">email me</a>.
           </p>
         </div>
         <div className="w-full max-w-[15rem] justify-self-center">
@@ -45,7 +45,7 @@ export default function Hero() {
           />
           <nav aria-label="Contact and links" className="mt-3 space-y-1 text-center text-base">
             <div className="flex flex-wrap items-center justify-center gap-x-2">
-              <a className="text-link" href="mailto:andrewbelyaev2164@gmail.com">Email</a>
+              <a className="text-link" href="mailto:andrei.y.belyaev@gmail.com">Email</a>
               <span aria-hidden="true">/</span>
               <a className="text-link" href="https://github.com/andreibeliaev" target="_blank" rel="noopener noreferrer">GitHub</a>
               <span aria-hidden="true">/</span>
